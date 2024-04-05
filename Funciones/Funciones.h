@@ -1,5 +1,8 @@
 #ifndef FUNCIONES_H
 #define FUNCIONES_H
+#include <iostream>
+
+using namespace std;
 
 unsigned int** crearMatriz(int k) {
     unsigned int centro, valores;
