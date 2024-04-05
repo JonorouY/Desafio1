@@ -61,4 +61,101 @@ int rotarMatriz(unsigned int **matriz,int longitud){
     delete[] matrizNueva;
     return 0;
 }
+int ubicacion(int principal, int secundario){
+    int diferencia = (secundario - principal)/2;
+    return diferencia;
+}
+int comprobar(int *clave, int *candado,int longitud){
+    int columna, fila, columna1, fila1, num, diferencia, variable, rotar;
+    columna= clave[1]-1;
+    fila = clave[0]-1;
+    columna1 = clave[1]-1;
+    fila1 = clave[0]-1;
+    variable = 2;
+    rotar = 0;
+
+
+    for(int i=0; i<longitud-1; i++){
+        unsigned int **matriz_a = crearMatriz(candado[i]);
+        cout << rotar << " rotar " <<endl;
+        for (int i = 0; i < rotar; ++i) {
+            rotarMatriz(matriz_a,candado[i]);
+        }
+        rotar = 0;
+        unsigned int **matriz_b = crearMatriz(candado[i+1]);
+
+        int num = clave[variable];
+        diferencia = ubicacion(candado[0],candado[i+1]);
+
+        columna1 += diferencia;
+        fila1 += diferencia;
+
+        if(num == 1){
+            cout << matriz_a[fila][columna] <<"valor matriz a" << endl;
+            cout << matriz_b[fila1][columna1] <<"valor matriz a" << endl;
+            for (int m=0; m < 2; m++ ){
+                if (matriz_a[fila][columna] < matriz_b[fila1][columna1]){
+                    rotarMatriz(matriz_b,candado[i]);
+                    cout << matriz_a[fila][columna]<< endl;
+                    cout << matriz_b[fila1][columna1]<< endl;
+                    rotar++;
+                }
+                else{
+                    break;
+                }
+            }
+            if (matriz_a[fila][columna] < matriz_b[fila1][columna1]){
+                cout << "La contrasena no concuerda con la cerradura, en 1. ";
+                return 0;
+            }
+        }
+
+        if(num == -1 ){
+            for (int m=0; m < 2; m++ ){
+                if (matriz_a[fila][columna] > matriz_b[fila1][columna1]){
+                    rotarMatriz(matriz_b,candado[i]);
+                    cout << matriz_a[fila][columna]<< endl;
+                    cout << matriz_b[fila1][columna1]<< endl;
+                    rotar++;
+                }
+                else{
+                    break;
+                }
+            }
+            if (matriz_a[fila][columna] > matriz_b[fila1][columna1]){
+                cout << "La contrasena no concuerda con la cerradura, en -1. ";
+                return 0;
+            }
+        }
+        if(num == 0 ){
+            for (int m=0; m < 2; m++ ){
+                if (matriz_a[fila][columna] > matriz_b[fila1][columna1]){
+                    rotarMatriz(matriz_b,candado[i]);
+                    cout << matriz_a[fila][columna]<< endl;
+                    cout << matriz_b[fila1][columna1]<< endl;
+                    rotar++;
+                }
+                else{
+                    break;
+                }
+            }
+            if (matriz_a[fila][columna] == matriz_b[fila1][columna1]){
+                cout << "La contrasena no concuerda con la cerradura, en 0 ";
+                return 0;
+            }
+        }
+
+        delete[] matriz_a;
+        delete[] matriz_b;
+
+        columna = columna1;
+        fila = fila1;
+        columna1 = clave[1]-1;
+        fila1 = clave[0]-1;
+        variable++;
+    }
+    cout << "La contrasena concuerda con la cerradura. ";
+    return 0;
+}
+
 #endif
