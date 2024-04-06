@@ -126,7 +126,7 @@ int comprobar(int *clave, int *candado,int longitud){
         }
         if(num == 0 ){
             for (int m=0; m < 2; m++ ){
-                if (matriz_a[fila][columna] > matriz_b[fila1][columna1]){
+                if (!(matriz_a[fila][columna] == matriz_b[fila1][columna1])){
                     rotarMatriz(matriz_b, valor);
                     rotar++;
                 }
@@ -134,7 +134,7 @@ int comprobar(int *clave, int *candado,int longitud){
                     break;
                 }
             }
-            if (matriz_a[fila][columna] == matriz_b[fila1][columna1]){
+            if (!(matriz_a[fila][columna] == matriz_b[fila1][columna1])){
                 cout << "La contrasena no concuerda con la cerradura, en 0 ";
                 return 0;
             }
