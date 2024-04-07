@@ -4,8 +4,8 @@
 
 using namespace std;
 
-unsigned int** crearMatriz(int k) {
-    unsigned int centro, valores;
+unsigned int** crearMatriz(short int k) {
+    unsigned short int centro, valores;
     valores = 1;
     centro = ((k + 1)/2) - 1;
 
@@ -28,7 +28,7 @@ unsigned int** crearMatriz(int k) {
     return matriz;
 }
 
-int rotarMatriz(unsigned int **matriz,int longitud){
+int rotarMatriz(unsigned int **matriz,short int longitud){
     int **matrizNueva = new int *[longitud];
     for(int i=0;i<longitud;i++)
     {
@@ -68,8 +68,9 @@ int ubicacion(int principal, int secundario){
     int diferencia = (secundario - principal)/2;
     return diferencia;
 }
-int comprobar(int *clave, int *candado,int longitud){
-    int columna, fila, columna1, fila1, num, diferencia, variable, rotar;
+int comprobar(int *clave, int *candado,unsigned short int longitud){
+    unsigned short int  columna, fila, columna1, fila1, num, variable, rotar;
+    short int diferencia;
     columna= clave[1]-1;
     fila = clave[0]-1;
     columna1 = clave[1]-1;
@@ -105,7 +106,7 @@ int comprobar(int *clave, int *candado,int longitud){
                 }
             }
             if (matriz_a[fila][columna] <= matriz_b[fila1][columna1]){
-                cout << "La contraseña no concuerda con la cerradura, en 1. ";
+                cout << "La contrasena no concuerda con la cerradura. ";
                 return 0;
             }
         }
@@ -120,7 +121,7 @@ int comprobar(int *clave, int *candado,int longitud){
                 }
             }
             if (matriz_a[fila][columna] >= matriz_b[fila1][columna1]){
-                cout << "La contrasena no concuerda con la cerradura, en -1. ";
+                cout << "La contrasena no concuerda con la cerradura. ";
                 return 0;
             }
         }
@@ -135,7 +136,7 @@ int comprobar(int *clave, int *candado,int longitud){
                 }
             }
             if (!(matriz_a[fila][columna] == matriz_b[fila1][columna1])){
-                cout << "La contrasena no concuerda con la cerradura, en 0 ";
+                cout << "La contrasena no concuerda con la cerradura.";
                 return 0;
             }
         }
