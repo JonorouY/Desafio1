@@ -4,7 +4,7 @@
 
 using namespace std;
 
-unsigned int** crearMatriz(short int k) {
+unsigned int** crearMatriz(unsigned short int k) {
     unsigned short int centro, valores;
     valores = 1;
     centro = ((k + 1)/2) - 1;
@@ -28,7 +28,7 @@ unsigned int** crearMatriz(short int k) {
     return matriz;
 }
 
-int rotarMatriz(unsigned int **matriz,short int longitud){
+int rotarMatriz(unsigned int **matriz, unsigned short int longitud){
     int **matrizNueva = new int *[longitud];
     for(int i=0;i<longitud;i++)
     {
@@ -64,8 +64,8 @@ int rotarMatriz(unsigned int **matriz,short int longitud){
     delete[] matrizNueva;
     return 0;
 }
-int ubicacion(int principal, int secundario){
-    int diferencia = (secundario - principal)/2;
+int ubicacion(unsigned short int principal, unsigned short int secundario){
+    unsigned short int diferencia = (secundario - principal)/2;
     return diferencia;
 }
 int comprobar(int *clave, int *candado,unsigned short int longitud){
@@ -79,10 +79,10 @@ int comprobar(int *clave, int *candado,unsigned short int longitud){
     rotar = 0;
 
     for(int i=0; i<longitud-1; i++){
-        int valor = candado[i+1];
-        int valor0 = candado[i];
-
+        unsigned short int valor = candado[i+1];
+        unsigned short int valor0 = candado[i];
         unsigned int **matriz_a = crearMatriz(valor0);
+
         for (int i = 0; i < rotar; ++i) {
             rotarMatriz(matriz_a,valor0);
         }

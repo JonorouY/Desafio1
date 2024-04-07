@@ -11,12 +11,12 @@ int main()
     //x y son las posiciones donde se desea que el candado esté "calibrado"
     int x1,y1,x2,y2;
 
-    int contador = 7;
+    int contador = 5;
     int diferencia = 0;
-    int clave [7] = {5,7,1,-1,1,-1,-1};
+    int clave [5] = {3,2,1,-1,0};
     int fila = clave[0];
     int columna = clave[1];
-    int cantidadDeMatrices = 6;
+    int cantidadDeMatrices = 4;
     int candado [contador - 1];
     //llenemos el candado de matrices 3*3
     for(int i = 0 ; i < (contador-1) ; i++)
